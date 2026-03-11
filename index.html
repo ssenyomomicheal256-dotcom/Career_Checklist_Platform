@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Exploration Checklist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="app-header" class="hidden">
+        <button id="back-btn">← Back</button>
+        <h2 id="header-title">Checklist</h2>
+    </header>
+
+    <main id="app-container">
+        <section id="home-page" class="view active">
+            <div class="center-content">
+                <h1>Career Exploration Checklist</h1>
+                <p>Track your secondary school journey.</p>
+                <button id="start-btn" class="primary-btn">Start</button>
+            </div>
+        </section>
+
+        <section id="levels-page" class="view">
+            <h2>Select Level</h2>
+            <div class="list-container">
+                <button class="list-item" onclick="openLevel('S3')">Senior 3 (S3)</button>
+                <button class="list-item" onclick="openLevel('S4')">Senior 4 (S4)</button>
+            </div>
+        </section>
+
+        <section id="topics-page" class="view">
+            <h2 id="level-title">Topics</h2>
+            <div id="topics-list" class="list-container">
+                </div>
+        </section>
+
+        <section id="questions-page" class="view">
+            <h2 id="topic-title">Questions</h2>
+            <div id="questions-list" class="checklist-container">
+                </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
