@@ -1,36 +1,63 @@
 // Data Structure for Questions
 const checklistData = {
 	S3: {
-		Subjects: [
+		Studies: [
 			{
-				id: "s3_sub_1",
+				id: "s3_sub_1_1",
 				text: "Do you know the number of subjects you need to take at UCE?",
 			},
 			{
-				id: "s3_sub_2",
-				text: "Do you understand how each of the subjects you need to take at UCE is graded?",
+				id: "s3_sub_1_2",
+				text: "Do you understand how each of the subjects you need to take are graded at school?",
 			},
-			{ id: "s3_sub_3", text: "" },
+			{
+				id: "s3_sub_1_3",
+				text: "Do you know of some scholarships inside / outside school / abroad you could apply for",
+			},
+			{
+				id: "s3_sub_1_4",
+				text: "Do you understand the five achievement levels (A, B, C, D, E) used by UNEB",
+			},
 		],
+
 		"Human relationships": [
 			{
-				id: "s3_sub_1",
+				id: "s3_sub_2_1",
 				text: "Have you tried talking to a teacher to tell them what you are interested in?",
 			},
-			{ id: "s3_sub_2", text: "Do you have a favorite teacher?" },
+			{ id: "s3_sub_2_2", text: "Do you have a favorite teacher?" },
 		],
+
 		"Extra curriculars": [
 			{
-				id: "s3_sub_1",
+				id: "s3_sub_3_1",
 				text: "Have you tried some activities at school besides classes?",
 			},
 		],
 	},
+
 	S4: {
 		University: [
 			{
 				id: "s4_uni_1",
 				text: "Do you know the name of the course you want to take at university?",
+			},
+		],
+	},
+
+	S5: {
+		University: [
+			{
+				id: "s5_uni_1_1",
+				text: "Have you confirmed the school fees at the universities you are interested in?",
+			},
+			{
+				id: "s5_uni_1_2",
+				text: "Have you thought of commuting from home or finding a hostel?",
+			},
+			{
+				id: "s5_uni_1_3",
+				text: "Have you heard about work-study opportunities available at some universities that allow students to work on campus to offset their fees?",
 			},
 		],
 	},
