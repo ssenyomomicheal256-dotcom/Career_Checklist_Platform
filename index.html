@@ -4,43 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Career Exploration Checklist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header id="app-header" class="hidden">
-        <button id="back-btn">← Back</button>
+        <button id="back-btn" aria-label="Go back">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
         <h2 id="header-title">Checklist</h2>
+        <div class="header-spacer"></div>
     </header>
 
     <main id="app-container">
+
+        <!-- HOME -->
         <section id="home-page" class="view active">
-            <div class="center-content">
-                <h1>Career Exploration Checklist</h1>
-                <p>Track your secondary school journey.</p>
-                <button id="start-btn" class="primary-btn">Start</button>
+            <div class="home-content">
+                <div class="home-badge">S3 · S4 · S5</div>
+                <h1>Career<br>Exploration</h1>
+                <p>Track your goals and discoveries as you navigate secondary school.</p>
+                <button id="start-btn" class="primary-btn">
+                    Get Started
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
             </div>
         </section>
 
+        <!-- LEVELS — rendered dynamically -->
         <section id="levels-page" class="view">
-            <h2>Select Level</h2>
-            <div class="list-container">
-                <button class="list-item" onclick="openLevel('S3')">Senior 3 (S3)</button>
-                <button class="list-item" onclick="openLevel('S4')">Senior 4 (S4)</button>
+            <div class="page-intro">
+                <p class="page-label">Step 1</p>
+                <h2>Select your level</h2>
             </div>
+            <div id="levels-list" class="card-list"></div>
         </section>
 
+        <!-- TOPICS — rendered dynamically -->
         <section id="topics-page" class="view">
-            <h2 id="level-title">Topics</h2>
-            <div id="topics-list" class="list-container">
-                </div>
+            <div class="page-intro">
+                <p class="page-label" id="topics-level-label">S3</p>
+                <h2>Choose a topic</h2>
+            </div>
+            <div id="topics-list" class="card-list"></div>
         </section>
 
-        <section id="questions-page" class="view">
-            <h2 id="topic-title">Questions</h2>
-            <div id="questions-list" class="checklist-container">
-                </div>
+        <!-- SUBTOPICS — rendered dynamically -->
+        <section id="subtopics-page" class="view">
+            <div class="page-intro">
+                <p class="page-label" id="subtopics-topic-label">Topic</p>
+                <h2 id="subtopics-title">Subtopics</h2>
+            </div>
+            <div id="subtopics-list" class="card-list"></div>
         </section>
+
+        <!-- QUESTIONS — rendered dynamically -->
+        <section id="questions-page" class="view">
+            <div class="page-intro">
+                <p class="page-label" id="questions-topic-label">Topic</p>
+                <h2 id="questions-title">Questions</h2>
+            </div>
+            <div id="questions-list" class="checklist-container"></div>
+        </section>
+
     </main>
 
     <script src="script.js"></script>
