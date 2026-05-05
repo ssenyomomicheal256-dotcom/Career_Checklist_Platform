@@ -2,6 +2,7 @@
   "name": "my-project",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "predev": "node scripts/write-env.js",
     "dev": "vite",
@@ -11,6 +12,5 @@
   },
   "dependencies": {
     "vite": "^5.4.8"
-    "type": "module"
   }
 }
