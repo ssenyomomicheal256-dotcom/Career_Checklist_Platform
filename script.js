@@ -5,16 +5,21 @@
 // ============================================================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+import {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    updateDoc,
+} from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
 
 const firebaseConfig = {
-    
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
     projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
     storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-    appId: import.meta.env.VITE_FIREBASE_APP_ID
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // ============================================================
@@ -25,47 +30,107 @@ const checklistData = {
     S3: {
         Studies: {
             School: [
-                { id: "s3_school_1", text: "Do you know the number of subjects you need to take at UCE?" },
-                { id: "s3_school_2", text: "Do you understand how each of the subjects you need to take are graded at school?" },
-                { id: "s3_school_3", text: "Have you identified your strongest and weakest subjects?" },
+                {
+                    id: "s3_school_1",
+                    text: "Do you know the number of subjects you need to take at UCE?",
+                },
+                {
+                    id: "s3_school_2",
+                    text: "Do you understand how each of the subjects you need to take are graded at school?",
+                },
+                {
+                    id: "s3_school_3",
+                    text: "Have you identified your strongest and weakest subjects?",
+                },
             ],
             UCE: [
-                { id: "s3_uce_1", text: "Do you understand the five achievement levels (A, B, C, D, E) used by UNEB?" },
-                { id: "s3_uce_2", text: "Do you know which subjects are compulsory at UCE?" },
+                {
+                    id: "s3_uce_1",
+                    text: "Do you understand the five achievement levels (A, B, C, D, E) used by UNEB?",
+                },
+                {
+                    id: "s3_uce_2",
+                    text: "Do you know which subjects are compulsory at UCE?",
+                },
             ],
             Scholarships: [
-                { id: "s3_scholar_1", text: "Do you know of some scholarships inside / outside school / abroad you could apply for?" },
-                { id: "s3_scholar_2", text: "Have you spoken to your school about any bursary or financial aid options?" },
+                {
+                    id: "s3_scholar_1",
+                    text: "Do you know of some scholarships inside / outside school / abroad you could apply for?",
+                },
+                {
+                    id: "s3_scholar_2",
+                    text: "Have you spoken to your school about any bursary or financial aid options?",
+                },
             ],
         },
         "Human Relationships": [
-            { id: "s3_rel_1", text: "Have you tried talking to a teacher to tell them what you are interested in?" },
-            { id: "s3_rel_2", text: "Do you have a favourite teacher you can go to for guidance?" },
+            {
+                id: "s3_rel_1",
+                text: "Have you tried talking to a teacher to tell them what you are interested in?",
+            },
+            {
+                id: "s3_rel_2",
+                text: "Do you have a favourite teacher you can go to for guidance?",
+            },
         ],
         "Extra Curriculars": [
-            { id: "s3_ec_1", text: "Have you tried some activities at school besides classes?" },
-            { id: "s3_ec_2", text: "Have you joined any club or society that relates to your interests?" },
+            {
+                id: "s3_ec_1",
+                text: "Have you tried some activities at school besides classes?",
+            },
+            {
+                id: "s3_ec_2",
+                text: "Have you joined any club or society that relates to your interests?",
+            },
         ],
     },
     S4: {
         University: [
-            { id: "s4_uni_1", text: "Do you know the name of the course you want to take at university?" },
-            { id: "s4_uni_2", text: "Do you know the entry requirements for your chosen course?" },
+            {
+                id: "s4_uni_1",
+                text: "Do you know the name of the course you want to take at university?",
+            },
+            {
+                id: "s4_uni_2",
+                text: "Do you know the entry requirements for your chosen course?",
+            },
         ],
         "Career Exploration": [
-            { id: "s4_car_1", text: "Have you researched at least two careers that interest you?" },
-            { id: "s4_car_2", text: "Have you spoken to a professional in a career field you are curious about?" },
+            {
+                id: "s4_car_1",
+                text: "Have you researched at least two careers that interest you?",
+            },
+            {
+                id: "s4_car_2",
+                text: "Have you spoken to a professional in a career field you are curious about?",
+            },
         ],
     },
     S5: {
         University: [
-            { id: "s5_uni_1", text: "Have you confirmed the school fees at the universities you are interested in?" },
-            { id: "s5_uni_2", text: "Have you thought of commuting from home or finding a hostel?" },
-            { id: "s5_uni_3", text: "Have you heard about work-study opportunities available at some universities that allow students to work on campus to offset their fees?" },
+            {
+                id: "s5_uni_1",
+                text: "Have you confirmed the school fees at the universities you are interested in?",
+            },
+            {
+                id: "s5_uni_2",
+                text: "Have you thought of commuting from home or finding a hostel?",
+            },
+            {
+                id: "s5_uni_3",
+                text: "Have you heard about work-study opportunities available at some universities that allow students to work on campus to offset their fees?",
+            },
         ],
         "A-Level Subjects": [
-            { id: "s5_alev_1", text: "Do you understand how A-Level subjects relate to your intended university course?" },
-            { id: "s5_alev_2", text: "Have you confirmed which subject combination is required for your chosen career path?" },
+            {
+                id: "s5_alev_1",
+                text: "Do you understand how A-Level subjects relate to your intended university course?",
+            },
+            {
+                id: "s5_alev_2",
+                text: "Have you confirmed which subject combination is required for your chosen career path?",
+            },
         ],
     },
 };
@@ -92,7 +157,8 @@ let firebaseReady = false;
 function getOrCreateUserId() {
     let id = localStorage.getItem("ce_user_id");
     if (!id) {
-        id = "user_" + Date.now() + "_" + Math.random().toString(36).slice(2, 9);
+        id =
+            "user_" + Date.now() + "_" + Math.random().toString(36).slice(2, 9);
         localStorage.setItem("ce_user_id", id);
     }
     return id;
@@ -125,10 +191,14 @@ async function loadProgressFromFirestore() {
             localStorage.setItem("studentProgress", JSON.stringify(progress));
         } else {
             // First time — seed from localStorage if anything was saved before
-            progress = JSON.parse(localStorage.getItem("studentProgress")) || {};
+            progress =
+                JSON.parse(localStorage.getItem("studentProgress")) || {};
             if (Object.keys(progress).length > 0) {
                 // Migrate existing localStorage data to Firestore
-                await setDoc(docRef, { checks: progress, createdAt: Date.now() });
+                await setDoc(docRef, {
+                    checks: progress,
+                    createdAt: Date.now(),
+                });
             }
         }
     } catch (err) {
@@ -149,7 +219,11 @@ async function persistProgress() {
     syncTimeout = setTimeout(async () => {
         try {
             const docRef = doc(db, "progress", userId);
-            await setDoc(docRef, { checks: progress, updatedAt: Date.now() }, { merge: true });
+            await setDoc(
+                docRef,
+                { checks: progress, updatedAt: Date.now() },
+                { merge: true },
+            );
             showSyncIndicator("Saved ✓", "success");
         } catch (err) {
             console.warn("Firestore write failed:", err);
@@ -173,7 +247,9 @@ function showSyncIndicator(msg, type) {
     el.textContent = msg;
     el.className = `sync-indicator ${type} show`;
     clearTimeout(el._timer);
-    el._timer = setTimeout(() => { el.classList.remove("show"); }, 2000);
+    el._timer = setTimeout(() => {
+        el.classList.remove("show");
+    }, 2000);
 }
 
 // ============================================================
@@ -197,9 +273,14 @@ function getAllQuestions(topicData) {
 }
 
 function getQuestionsProgress(questions) {
-    if (!questions || questions.length === 0) return { done: 0, total: 0, pct: 0 };
-    const done = questions.filter(q => progress[q.id]).length;
-    return { done, total: questions.length, pct: Math.round((done / questions.length) * 100) };
+    if (!questions || questions.length === 0)
+        return { done: 0, total: 0, pct: 0 };
+    const done = questions.filter((q) => progress[q.id]).length;
+    return {
+        done,
+        total: questions.length,
+        pct: Math.round((done / questions.length) * 100),
+    };
 }
 
 function getTopicProgress(topicData) {
@@ -233,10 +314,18 @@ function renderAndShow(state) {
 
     // Re-render dynamic pages
     switch (viewId) {
-        case "levels-page":     renderLevelsPage(); break;
-        case "topics-page":     renderTopicsPage(currentLevel); break;
-        case "subtopics-page":  renderSubtopicsPage(currentLevel, currentTopic); break;
-        case "questions-page":  renderQuestionsPage(currentLevel, currentTopic, subtopic || null); break;
+        case "levels-page":
+            renderLevelsPage();
+            break;
+        case "topics-page":
+            renderTopicsPage(currentLevel);
+            break;
+        case "subtopics-page":
+            renderSubtopicsPage(currentLevel, currentTopic);
+            break;
+        case "questions-page":
+            renderQuestionsPage(currentLevel, currentTopic, subtopic || null);
+            break;
     }
 
     // Show/hide header
@@ -250,7 +339,9 @@ function renderAndShow(state) {
     }
 
     // Activate view
-    document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
+    document
+        .querySelectorAll(".view")
+        .forEach((v) => v.classList.remove("active"));
     const target = document.getElementById(viewId);
     if (target) target.classList.add("active");
 }
@@ -286,9 +377,9 @@ function progressBarHTML(pct) {
 function renderLevelsPage() {
     const list = document.getElementById("levels-list");
     list.innerHTML = "";
-    Object.keys(checklistData).forEach(level => {
+    Object.keys(checklistData).forEach((level) => {
         const topics = checklistData[level];
-        const allQ = Object.values(topics).flatMap(t => getAllQuestions(t));
+        const allQ = Object.values(topics).flatMap((t) => getAllQuestions(t));
         const { pct } = getQuestionsProgress(allQ);
         const btn = document.createElement("button");
         btn.className = "card-item";
@@ -310,7 +401,7 @@ function renderTopicsPage(level) {
     document.getElementById("topics-level-label").innerText = level;
     const list = document.getElementById("topics-list");
     list.innerHTML = "";
-    Object.keys(checklistData[level]).forEach(topic => {
+    Object.keys(checklistData[level]).forEach((topic) => {
         const topicData = checklistData[level][topic];
         const pct = getTopicProgress(topicData);
         const hasSubtopics = isSubtopicObject(topicData);
@@ -319,7 +410,7 @@ function renderTopicsPage(level) {
         btn.innerHTML = `
             <div class="card-main">
                 <span class="card-title">${topic}</span>
-                ${hasSubtopics ? '<span class="card-tag subtag">subtopics</span>' : ''}
+                ${hasSubtopics ? '<span class="card-tag subtag">subtopics</span>' : ""}
             </div>
             ${progressBarHTML(pct)}
         `;
@@ -335,12 +426,13 @@ function renderTopicsPage(level) {
 }
 
 function renderSubtopicsPage(level, topic) {
-    document.getElementById("subtopics-topic-label").innerText = `${level} › ${topic}`;
+    document.getElementById("subtopics-topic-label").innerText =
+        `${level} › ${topic}`;
     document.getElementById("subtopics-title").innerText = topic;
     const list = document.getElementById("subtopics-list");
     list.innerHTML = "";
     const subtopics = checklistData[level][topic];
-    Object.keys(subtopics).forEach(subtopic => {
+    Object.keys(subtopics).forEach((subtopic) => {
         const questions = subtopics[subtopic];
         const { pct } = getQuestionsProgress(questions);
         const btn = document.createElement("button");
@@ -359,7 +451,9 @@ function renderSubtopicsPage(level, topic) {
 }
 
 function renderQuestionsPage(level, topic, subtopic) {
-    const label = subtopic ? `${level} › ${topic} › ${subtopic}` : `${level} › ${topic}`;
+    const label = subtopic
+        ? `${level} › ${topic} › ${subtopic}`
+        : `${level} › ${topic}`;
     document.getElementById("questions-topic-label").innerText = label;
     document.getElementById("questions-title").innerText = subtopic || topic;
     const questions = subtopic
@@ -373,7 +467,7 @@ function renderQuestionsPage(level, topic, subtopic) {
     summaryEl.id = "summary-bar";
     summaryEl.innerHTML = `<span>${done} of ${total} completed</span>${progressBarHTML(Math.round((done / total) * 100))}`;
     container.appendChild(summaryEl);
-    questions.forEach(q => {
+    questions.forEach((q) => {
         const isChecked = !!progress[q.id];
         const card = document.createElement("div");
         card.className = `question-card${isChecked ? " checked" : ""}`;
@@ -386,7 +480,9 @@ function renderQuestionsPage(level, topic, subtopic) {
                 <span class="question-text">${q.text}</span>
             </label>
         `;
-        card.addEventListener("click", () => handleCheck(q.id, questions, card));
+        card.addEventListener("click", () =>
+            handleCheck(q.id, questions, card),
+        );
         container.appendChild(card);
     });
 }
@@ -421,7 +517,7 @@ function renderCareerSearchPage() {
             </div>`;
         return;
     }
-    careerSearchLinks.forEach(link => {
+    careerSearchLinks.forEach((link) => {
         const a = document.createElement("a");
         a.className = "resource-link-card";
         a.href = link.url;
@@ -486,7 +582,7 @@ menuCloseBtn.addEventListener("click", closeMenu);
 menuOverlay.addEventListener("click", closeMenu);
 
 // Expandable subtrees in the menu
-document.querySelectorAll(".menu-expandable").forEach(btn => {
+document.querySelectorAll(".menu-expandable").forEach((btn) => {
     btn.addEventListener("click", () => {
         const targetId = btn.dataset.expand;
         const subtree = document.getElementById(targetId);
@@ -498,7 +594,7 @@ document.querySelectorAll(".menu-expandable").forEach(btn => {
 });
 
 // Menu navigation links (pages)
-document.querySelectorAll(".menu-link[data-nav]").forEach(btn => {
+document.querySelectorAll(".menu-link[data-nav]").forEach((btn) => {
     btn.addEventListener("click", () => {
         const viewId = btn.dataset.nav;
         const title = btn.dataset.title || "";
@@ -508,7 +604,7 @@ document.querySelectorAll(".menu-link[data-nav]").forEach(btn => {
 });
 
 // Menu subtopic shortcuts
-document.querySelectorAll(".menu-sublink").forEach(btn => {
+document.querySelectorAll(".menu-sublink").forEach((btn) => {
     btn.addEventListener("click", () => {
         const level = btn.dataset.level;
         const topic = btn.dataset.topic;
@@ -530,8 +626,7 @@ document.querySelectorAll(".menu-sublink").forEach(btn => {
 // ============================================================
 
 document.getElementById("home-btn").addEventListener("click", () => {
-    history.pushState({ viewId: "home-page", title: "" }, "", "#home-page");
-    renderAndShow({ viewId: "home-page", title: "" });
+    navigateTo("hub-page", "Welcome");
     closeMenu();
 });
 
@@ -547,10 +642,12 @@ document.getElementById("hub-resources-btn").addEventListener("click", () => {
     navigateTo("resources-page", "Resources");
 });
 
-document.getElementById("res-career-search-btn").addEventListener("click", () => {
-    renderCareerSearchPage();
-    navigateTo("career-search-page", "Career Search");
-});
+document
+    .getElementById("res-career-search-btn")
+    .addEventListener("click", () => {
+        renderCareerSearchPage();
+        navigateTo("career-search-page", "Career Search");
+    });
 
 // ============================================================
 // INIT
