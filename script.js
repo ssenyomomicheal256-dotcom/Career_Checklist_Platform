@@ -40,7 +40,7 @@ const checklistData = {
                 },
                 {
                     id: "s3_school_3",
-                    text: "Have you identified your strongest and weakest subjects sofar?",
+                    text: "Have you identified your strongest and weakest subjects so far?",
                 },
             ],
             UCE: [
